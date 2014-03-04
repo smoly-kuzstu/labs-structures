@@ -9,5 +9,11 @@ package standart.core;
  * @author Andrey
  */
 public class Quque {
+    public void enquque(int value){
+        
+    }
     
+    public int dequque(){
+        return -1;
+    }
 }

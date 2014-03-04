@@ -2,7 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package tree;
+package tree.binary;
+
+import standart.linkedlist.ValueObject;
 
 /**
  *
@@ -12,6 +14,7 @@ public class TreeNode {
     protected TreeNode left;
     protected TreeNode right;
     protected TreeNode parent;
+    protected ValueObject<Integer, String> value;
     /**
      * @return the left
      */
@@ -52,5 +55,19 @@ public class TreeNode {
      */
     public void setParent(TreeNode parent) {
         this.parent = parent;
+    }
+
+    /**
+     * @return the value
+     */
+    public ValueObject<Integer, String> getValue() {
+        return value;
+    }
+
+    /**
+     * @param value the value to set
+     */
+    public void setValue(ValueObject<Integer, String> value) {
+        this.value = value;
     }
 }

@@ -7,6 +7,7 @@ package labsstructures;
 import standart.core.StackDemo;
 import standart.hashmap.HashMapDemo;
 import standart.linkedlist.LinkedListDemo;
+import tree.binary.BinaryTreeDemo;
 
 /**
  *
@@ -21,6 +22,8 @@ public class LabsStructures {
         // TODO code application logic here
         //LinkedListDemo linkedList = new LinkedListDemo();
         //HashMapDemo hashMapDemo = new HashMapDemo();
-        StackDemo stack = new StackDemo();
+        //StackDemo stack = new StackDemo();
+        BinaryTreeDemo binTreeDemo = new BinaryTreeDemo();
+        
     }
 }
