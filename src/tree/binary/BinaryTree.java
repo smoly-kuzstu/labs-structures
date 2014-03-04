@@ -11,24 +11,20 @@ import standart.linkedlist.ValueObject;
  * @author Andrey
  */
 public class BinaryTree {
-    protected TreeNode rootNode;
+    protected BinaryTree left;
+    protected BinaryTree right;
+    protected BinaryTree parent;
+    protected ValueObject<Integer, String> value;
     protected int searchIterations;
     
     public void add(ValueObject<Integer, String> value){
         int key = value.getKey();
-        
-        if (rootNode == null){
-            rootNode = new TreeNode();
-            rootNode.setValue(value);
-            return;
-        }
-        
-        TreeNode currentNode = rootNode;
-        TreeNode newNode = new TreeNode();
+        BinaryTree currentNode = this;
+        BinaryTree newNode = new BinaryTree();
         newNode.setValue(value);
                 
         while(currentNode != null){
-            TreeNode selectedNode;
+            BinaryTree selectedNode;
             int nodeKey = currentNode.getValue().getKey();
             if (key > nodeKey){
                 selectedNode = currentNode.getRight();
@@ -53,10 +49,8 @@ public class BinaryTree {
     public ValueObject<Integer, String> find(int key){
         searchIterations = 0;
         ValueObject<Integer, String> res;
-        if (rootNode == null) return null;
         
-        boolean flag = true;
-        TreeNode currentNode = rootNode;
+        BinaryTree currentNode = this;
         while(currentNode != null){
             searchIterations++;
             int nodeKey = currentNode.getValue().getKey();
@@ -74,10 +68,71 @@ public class BinaryTree {
 
         return null;
     }
-    public int getSearchIterations(){
-        return searchIterations;
-    }
-    /*public int getHeight(){
-    }*/
     
+    public void traverse(ITreeVisitor visitor){
+        if (this.left != null){
+            this.left.traverse(visitor);
+        }
+        
+        visitor.visit(this);
+        
+        if (this.right != null){
+            this.right.traverse(visitor);
+        }
+    }
+    /**
+     * @return the left
+     */
+    public BinaryTree getLeft() {
+        return left;
+    }
+
+    /**
+     * @param left the left to set
+     */
+    public void setLeft(BinaryTree left) {
+        this.left = left;
+    }
+
+    /**
+     * @return the right
+     */
+    public BinaryTree getRight() {
+        return right;
+    }
+
+    /**
+     * @param right the right to set
+     */
+    public void setRight(BinaryTree right) {
+        this.right = right;
+    }
+
+    /**
+     * @return the parent
+     */
+    public BinaryTree getParent() {
+        return parent;
+    }
+
+    /**
+     * @param parent the parent to set
+     */
+    public void setParent(BinaryTree parent) {
+        this.parent = parent;
+    }
+
+    /**
+     * @return the value
+     */
+    public ValueObject<Integer, String> getValue() {
+        return value;
+    }
+
+    /**
+     * @param value the value to set
+     */
+    public void setValue(ValueObject<Integer, String> value) {
+        this.value = value;
+    }
 }

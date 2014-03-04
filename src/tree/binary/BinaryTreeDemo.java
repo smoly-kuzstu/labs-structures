@@ -23,7 +23,12 @@ public class BinaryTreeDemo {
         valObject.setKey(key);
         valObject.setValue(value);
         
-        binarySearchTree.add(valObject);
+        if (binarySearchTree.getValue() == null){
+            binarySearchTree.setValue(valObject);
+        } else {
+            binarySearchTree.add(valObject);
+        }
+        
     }
     
     public void demo(){
@@ -41,5 +46,8 @@ public class BinaryTreeDemo {
         } else {
             System.out.println("Key not found");
         }
+        
+        binarySearchTree.traverse(new PrintKeysVisitor());
+        
     }
 }
