@@ -12,6 +12,7 @@ public class LinkedList {
     protected LinkedListItem currentItem;
     protected LinkedListItem headItem;
     protected LinkedListItem tailItem;
+    protected int size;
     
     public void add(ValueObject value){
         LinkedListItem item = new LinkedListItem();
@@ -19,13 +20,14 @@ public class LinkedList {
 
         if (currentItem == null){
            currentItem = item;
-           headItem = currentItem;
+           tailItem = headItem = currentItem;
         } else {
            currentItem.setNext(item);
            item.setPrev(currentItem);
            currentItem = item;
            tailItem = item;
-        }  
+        }
+        size++;
     }
     
     public void next(){
@@ -55,9 +57,28 @@ public class LinkedList {
     }
     
     public void removeFirst(){
+        if (headItem != null){
+            
+            LinkedListItem cItem = headItem.getNext();
+            cItem.setPrev(null);
+            
+            headItem = cItem;
+            size--;
+        } 
     }
     
-    public void removeLast(){
+    public ValueObject removeLast(){
+        if (tailItem != null){
+            ValueObject value = tailItem.getValue();
+            currentItem = tailItem.getPrev();
+            if (currentItem != null){
+                currentItem.setNext(null);
+            }
+            tailItem = currentItem;
+            size--;
+            return value;
+        } 
+        return null;
     }
     
     public void rewind(){

@@ -4,34 +4,46 @@
  */
 package standart.core;
 
+
+import standart.linkedlist.LinkedList;
+import standart.linkedlist.ValueObject;
+
 /**
  *
  * @author Andrey
  */
 public class Stack {
     protected int size;
-    protected int maxElements;
-    protected double[] elements;
+    protected LinkedList linkedList;
     
-    public Stack(int maxElements){
-        this.maxElements = maxElements;
-        this.size = 0;
-        elements = new double[maxElements];
+    public Stack(){
+        linkedList = new LinkedList();
+    }
+        
+    public void   push(int value){
+        ValueObject<String, Integer> valObj = new ValueObject<>();
+        valObj.setValue(value);
+        
+        linkedList.add(valObj);
+        size++;
     }
     
-    void   push(double element){
-        elements[++size] = element;
+    public int  pop() {
+        ValueObject<String, Integer> valObj = linkedList.removeLast();
+        size--;
+        return valObj.getValue(); 
     }
     
-    double  pop() {
-        return elements[size--];
+    public double  peek() {
+        ValueObject<String, Integer> valObj = linkedList.getCurrent();
+        return valObj.getValue();
     }
     
-    double  peek() {
-        return elements[size];
+    public int getSize(){
+      return size;
     }
     
-    boolean empty(){
+    public boolean empty(){
         return size == 0;
     }
 }
