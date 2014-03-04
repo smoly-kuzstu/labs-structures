@@ -20,6 +20,7 @@ public class BinaryTree {
         if (rootNode == null){
             rootNode = new TreeNode();
             rootNode.setValue(value);
+            return;
         }
         
         TreeNode currentNode = rootNode;
@@ -32,19 +33,19 @@ public class BinaryTree {
             if (key > nodeKey){
                 selectedNode = currentNode.getRight();
                 if (selectedNode == null){
-                    currentNode.setRight(rootNode);
+                    currentNode.setRight(newNode);
                     return;
                 }
             } else {
                 selectedNode = currentNode.getLeft();
                 if (selectedNode == null){
-                    currentNode.setLeft(rootNode);
+                    currentNode.setLeft(newNode);
                     return;
                 }
             }
-            if (selectedNode != null){
-                currentNode = selectedNode;
-            }
+            
+            currentNode = selectedNode;
+            
         }
     }
     

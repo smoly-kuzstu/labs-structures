@@ -21,7 +21,7 @@ public class BinaryTreeDemo {
         ValueObject<Integer, String> valObject = new ValueObject<>();
         
         valObject.setKey(key);
-        valObject.setKey(key);
+        valObject.setValue(value);
         
         binarySearchTree.add(valObject);
     }
