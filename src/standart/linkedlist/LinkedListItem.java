@@ -10,7 +10,8 @@ package standart.linkedlist;
  */
 public class LinkedListItem {
     protected LinkedListItem next;
-    protected double value;
+    protected LinkedListItem prev;
+    protected ValueObject value;
     protected String key;
     /**
      * @return the next
@@ -29,14 +30,14 @@ public class LinkedListItem {
     /**
      * @return the value
      */
-    public double getValue() {
+    public ValueObject getValue() {
         return value;
     }
 
     /**
      * @param value the value to set
      */
-    public void setValue(double value) {
+    public void setValue(ValueObject value) {
         this.value = value;
     }
 
@@ -52,6 +53,20 @@ public class LinkedListItem {
      */
     public void setKey(String key) {
         this.key = key;
+    }
+
+    /**
+     * @return the prev
+     */
+    public LinkedListItem getPrev() {
+        return prev;
+    }
+
+    /**
+     * @param prev the prev to set
+     */
+    public void setPrev(LinkedListItem prev) {
+        this.prev = prev;
     }
 
 }

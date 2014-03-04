@@ -6,12 +6,13 @@ package standart.hashmap;
 
 import standart.linkedlist.LinkedList;
 import standart.linkedlist.LinkedListItem;
+import standart.linkedlist.ValueObject;
 
 /**
  *
  * @author Andrey
  */
-public class HashMap {
+public class HashMap <ValueType> {
     protected int bucketsCount;
     protected LinkedList[] buckets;
     protected int count;
@@ -23,23 +24,29 @@ public class HashMap {
         count = 0;
     }
     
-    public void put(String key, double value){
+    public void put(String key, ValueType value){
         int ind = getHash(key);
         LinkedList bucket = buckets[ind];
         if (bucket == null){
             bucket = new LinkedList();
             buckets[ind] = bucket;
         }
-        bucket.add(key, value);
+        
+        ValueObject<String, ValueType> valueObject = new ValueObject<>();
+        valueObject.setKey(key);
+        valueObject.setValue(value);
+        
+        bucket.add(valueObject);
         count++;
     }
     
-    public double get(String key) throws Exception{
+    public ValueType get(String key) throws Exception{
         LinkedListItem searchItem = this.searchKey(key);
         if (searchItem == null){
             throw new Exception("Key doesn't exists");
         }
-        return searchItem.getValue();
+        ValueObject<String, ValueType> valObject = searchItem.getValue();
+        return valObject.getValue();
     }
      /**
      * @return the count
@@ -59,9 +66,11 @@ public class HashMap {
         if (bucket == null){
             return null;
         } else {
-           while(bucket.hasCurrent()){
+           while(!bucket.empty()){
              LinkedListItem curItem = bucket.getCurrentItem();
-             if (curItem.getKey() == key){
+             ValueObject<String, Double> valueObj;
+             valueObj = curItem.getValue();  
+             if (valueObj.getKey() == key){
                  return curItem;
              }
              bucket.next();

@@ -11,22 +11,21 @@ package standart.linkedlist;
 public class LinkedList {
     protected LinkedListItem currentItem;
     protected LinkedListItem headItem;
+    protected LinkedListItem tailItem;
     
-    public void add(String key, double value){
+    public void add(ValueObject value){
         LinkedListItem item = new LinkedListItem();
         item.setValue(value);
-        item.setKey(key);
+
         if (currentItem == null){
            currentItem = item;
            headItem = currentItem;
         } else {
            currentItem.setNext(item);
+           item.setPrev(currentItem);
            currentItem = item;
+           tailItem = item;
         }  
-    }
-    
-    public void add(double value){
-        this.add("", value);
     }
     
     public void next(){
@@ -34,11 +33,16 @@ public class LinkedList {
          currentItem = item;    
     }
     
-    public double getCurrent(){
+    public void prev(){
+         LinkedListItem item = currentItem.getPrev();
+         currentItem = item;    
+    }
+    
+    public ValueObject getCurrent(){
         if (currentItem != null){
             return currentItem.getValue();
         } else {
-            return -1;
+            return null;
         }
     }
     
@@ -46,8 +50,14 @@ public class LinkedList {
         return currentItem;
     }
     
-    public boolean hasCurrent(){
-        return (currentItem != null);
+    public boolean empty(){
+        return (currentItem == null);
+    }
+    
+    public void removeFirst(){
+    }
+    
+    public void removeLast(){
     }
     
     public void rewind(){

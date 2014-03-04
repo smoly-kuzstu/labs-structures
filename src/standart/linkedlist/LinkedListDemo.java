@@ -18,8 +18,11 @@ public class LinkedListDemo {
     public void demo(){
         double v = 2;
         for (int i = 1; i < 10 ; i++){
-            System.out.println(v);
-            list.add(v);
+            
+            ValueObject<String, Double> valObj = new ValueObject<>();
+            valObj.setValue(v);
+            
+            list.add(valObj);
             v *=2;
         } 
         
@@ -29,9 +32,9 @@ public class LinkedListDemo {
     
     public void printList(){
         System.out.print("List is ");
-        while(list.hasCurrent()){
-            double curItem = list.getCurrent();
-            System.out.print(Double.toString(curItem) + " ");
+        while(!list.empty()){
+            ValueObject<String, Double> valueObj = list.getCurrent();
+            System.out.print(Double.toString(valueObj.getValue()) + " ");
             list.next();
         } 
     }
