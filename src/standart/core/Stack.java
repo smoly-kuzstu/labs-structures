@@ -12,7 +12,7 @@ import standart.linkedlist.ValueObject;
  *
  * @author Andrey
  */
-public class Stack {
+public class Stack implements IStack{
     protected int size;
     protected LinkedList linkedList;
     
@@ -34,7 +34,7 @@ public class Stack {
         return valObj.getValue(); 
     }
     
-    public double  peek() {
+    public int  peek() {
         ValueObject<String, Integer> valObj = linkedList.getCurrent();
         return valObj.getValue();
     }

@@ -21,9 +21,9 @@ public class LabsStructures {
     public static void main(String[] args) {
         // TODO code application logic here
         //LinkedListDemo linkedList = new LinkedListDemo();
-        //HashMapDemo hashMapDemo = new HashMapDemo();
+        HashMapDemo hashMapDemo = new HashMapDemo();
         //StackDemo stack = new StackDemo();
-        BinaryTreeDemo binTreeDemo = new BinaryTreeDemo();
+        //BinaryTreeDemo binTreeDemo = new BinaryTreeDemo();
         
     }
 }

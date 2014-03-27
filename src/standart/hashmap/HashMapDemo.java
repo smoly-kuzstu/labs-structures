@@ -27,12 +27,13 @@ public class HashMapDemo {
         }
         
         for(String surname : surnames){
-            System.out.println(surname);
             try{
                 hashMap.get(surname);
                 System.out.println(surname + ": " + hashMap.get(surname));
             } catch (Exception e) {
             }
-        }   
+        } 
+        
+        System.out.println("Использовано корзин: " + hashMap.dbgBucketsUses());
     }
 }
