@@ -13,8 +13,9 @@ import standart.linkedlist.ValueObject;
 public class BinaryTree {
     protected BinaryTree left;
     protected BinaryTree right;
-    protected BinaryTree parent;
     protected ValueObject<Integer, String> value;
+    
+    protected BinaryTree parent;
     protected int searchIterations;
     
     public void add(ValueObject<Integer, String> value){
@@ -48,7 +49,6 @@ public class BinaryTree {
         
     public ValueObject<Integer, String> find(int key){
         searchIterations = 0;
-        ValueObject<Integer, String> res;
         
         BinaryTree currentNode = this;
         while(currentNode != null){
