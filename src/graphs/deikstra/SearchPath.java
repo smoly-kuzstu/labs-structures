@@ -59,13 +59,9 @@ public class SearchPath {
         }
         
         d[sourceVertex] = 0;
-
         
         for (int i = 1; i <= N ; i++){
-            int v = getMinVertex();
-            System.out.println(v);
-            if (v == -1) continue;
-            
+            int v = getMinVertex();              
             for (int j = 1 ; j <= N; j++){
                 if (!marked[j]) relax(v, j);
             }
