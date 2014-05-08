@@ -7,18 +7,27 @@
 package graphs.deikstra;
 
 import graphs.common.Pair;
+import graphs.common.PathInfo;
+import java.util.Collections;
+import java.util.LinkedList;
 
+import static graphs.common.Metrics.*;
 /**
  *
  * @author Andrey
  */
 public class SearchPath {
+    //Матрица смежности, если нет ребра, то зачение +INF
     protected int[][] w;
+    //Матрица расстояний до каждой вершины от истока
+    protected int d[] ;
+    //Количество вершин
     protected int N;
-    public static final int INF = 100000000;
-    
+    //Массив, необходимый для хранения пути
+    protected int[] path;
+    //Массив с состоянием помеченности вершины
     boolean[] marked;
-    int d[] ;
+    
     /**
      * @param N vertex count
      * @param w  weight of edges
@@ -27,9 +36,9 @@ public class SearchPath {
     public SearchPath(int N, int[][] w){
         this.w = w;
         this.N = N;
-        // oR N + 1 ?
         d = new int[N + 1];
         marked = new boolean[N + 1];
+        path = new int[N + 1];
     }
     
     protected int  getMinVertex(){
@@ -46,13 +55,17 @@ public class SearchPath {
         return curInd;
     }
     
-    protected void relax(int i , int j){
+    protected void relax(int v , int to){
         //Минимальное из старого и нового расстояния
-        d[j] = Math.min(d[j], d[i] + w[i][j]) ;
+        int newPath =  d[v] + w[v][to];
+        if (newPath < d[to] ){
+            d[to] = newPath;
+            path[to] = v;
+        }
     }
     
-    public int[] getPaths(int sourceVertex){
-
+    
+    public int[] calculateDistances(int sourceVertex){
         for (int i = 1; i <= N ; i++){
             d[i] = INF;
             marked[i] = false;
@@ -69,7 +82,35 @@ public class SearchPath {
         }
         
         return d;
+    }
+    
+    public PathInfo[] getPaths(int sourceVertex){
         
+        PathInfo<Integer>[] res = new PathInfo[N + 1];
+        
+        this.calculateDistances(sourceVertex);
+        
+        for(int i = 1; i <= N; i++){
+            res[i] = getPath(sourceVertex, i);
+        }
+        
+        return res;
+        
+    }
+    
+    protected PathInfo getPath(int sourceVertex, int toVertex){
+        PathInfo<Integer> pathList= new PathInfo(true);
+        
+        pathList.setLength(d[toVertex]);
+        pathList.addVertex(toVertex);
+        
+        for(int v = toVertex; v != sourceVertex; v = path[v]){
+            pathList.addVertex(v);
+        }
+        
+        
+                
+        return pathList;
     }
     
 }

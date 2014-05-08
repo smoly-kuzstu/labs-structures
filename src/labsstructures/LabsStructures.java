@@ -4,7 +4,9 @@
  */
 package labsstructures;
 
-import graphs.deikstra.Demo;
+import graphs.deikstra.DemoDeijkstra;
+import graphs.traverse.TraverseDemo;
+import heap.DemoHeap;
 import standart.core.StackDemo;
 import standart.hashmap.HashMapDemo;
 import standart.linkedlist.LinkedListDemo;
@@ -26,7 +28,9 @@ public class LabsStructures {
         //StackDemo stack = new StackDemo();
         //BinaryTreeDemo binTreeDemo = new BinaryTreeDemo();
         
-       Demo SearchPathDemo = new Demo();
+       DemoDeijkstra SearchPathDemo = new DemoDeijkstra();
+       // DemoHeap heapDemo = new DemoHeap();
+       //TraverseDemo graphsTraverseDemo = new TraverseDemo();
         
     }
 }

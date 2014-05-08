@@ -13,14 +13,13 @@ package heap;
 public class BinaryHeap {
    protected int size;
    protected int heapSize;
-
    protected int[] A;
-   
-   
+     
    public BinaryHeap(int[] A){
-       heapSize = A.length;
+       heapSize = A.length - 1;
        this.A = A;
-       for (int i = heapSize / 2 ; i > 0; i--){
+       for (int i = heapSize  / 2; i >= 0; i--){
+           System.out.println(i);
            heapify(i);
        }
    } 
@@ -32,11 +31,11 @@ public class BinaryHeap {
    }
    
    public void heapify(int i){
-       int left = 2 * i;
-       int right = 2 * i + 1;
+       int left = 2 * i + 1;
+       int right = 2 * i + 2;
        int largest = i;
        
-       if (left <= heapSize && A[left] > A[i]){
+       if (left <= heapSize && (A[left] > A[i]) ){
            largest = left;
        }
        
@@ -46,7 +45,24 @@ public class BinaryHeap {
        
        if (largest != i){
            swap(largest, i);
-           heapify(largest);
+           heapify(i);
+       }
+   }
+   
+   public int extractMax(){
+       if (heapSize == 0){
+           return -1;
+       }
+       int max = A[0];
+       A[0] = A[heapSize];
+       heapSize--;
+       heapify(0);
+       return max;
+   }
+   
+   public void heapSort(){
+       for (int i = heapSize ; i > 0; i--){
+           A[i] = extractMax();
        }
    }
    

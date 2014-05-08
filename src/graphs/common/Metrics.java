@@ -4,14 +4,12 @@
  * and open the template in the editor.
  */
 
-package segmentTree;
+package graphs.common;
 
 /**
  *
  * @author Andrey
  */
-public class SegmentTreeEx extends SegmentTree{
-    public SegmentTreeEx(){
-        
-    }
+public class Metrics {
+    public static final int INF = 100000000;
 }
