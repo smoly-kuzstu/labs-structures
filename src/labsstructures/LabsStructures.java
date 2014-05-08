@@ -29,7 +29,7 @@ public class LabsStructures {
         //BinaryTreeDemo binTreeDemo = new BinaryTreeDemo();
         
        DemoDeijkstra SearchPathDemo = new DemoDeijkstra();
-       // DemoHeap heapDemo = new DemoHeap();
+        //DemoHeap heapDemo = new DemoHeap();
        //TraverseDemo graphsTraverseDemo = new TraverseDemo();
         
     }

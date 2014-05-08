@@ -15,16 +15,22 @@ import java.util.Arrays;
  */
 public class DemoHeap {
     public DemoHeap(){
-        int[] A = {5, 2, 1, 4, 11, 16, 10, 6, 9, 8}; 
+        int[] A = {5, 2, 1, 4, 11, 7, 10, 16, 9, 8}; 
         BinaryHeap heap = new BinaryHeap(A);
        
         int[] res = heap.getHeap();
         System.out.println(Arrays.toString(res));
         heap.heapSort();
         System.out.println(Arrays.toString(res));
-        int m = heap.extractMax();
-        System.out.printf("Max of heap is %d", m);
-         m = heap.extractMax();
-        System.out.printf("Max of heap is %d", m);
+        
+        heap = new BinaryHeap(A);
+        
+        for (int i = 1; i < 10; i++){
+            int m = heap.extractMax();
+            System.out.printf("Max of heap is %d", m);
+        }
+        
+        
+       
     }
 }

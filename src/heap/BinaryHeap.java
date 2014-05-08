@@ -18,8 +18,7 @@ public class BinaryHeap {
    public BinaryHeap(int[] A){
        heapSize = A.length - 1;
        this.A = A;
-       for (int i = heapSize  / 2; i >= 0; i--){
-           System.out.println(i);
+       for (int i = heapSize  / 2 ; i >= 0; i--){
            heapify(i);
        }
    } 
@@ -35,17 +34,17 @@ public class BinaryHeap {
        int right = 2 * i + 2;
        int largest = i;
        
-       if (left <= heapSize && (A[left] > A[i]) ){
+       if (left <= heapSize && (A[left] > A[largest]) ){
            largest = left;
        }
        
-       if (right <= heapSize && A[right] > A[i]){
+       if (right <= heapSize && (A[right] > A[largest]) ){
            largest = right;
        }
        
        if (largest != i){
            swap(largest, i);
-           heapify(i);
+           heapify(largest);
        }
    }
    

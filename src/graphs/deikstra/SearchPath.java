@@ -102,8 +102,7 @@ public class SearchPath {
         PathInfo<Integer> pathList= new PathInfo(true);
         
         pathList.setLength(d[toVertex]);
-        pathList.addVertex(toVertex);
-        
+               
         for(int v = toVertex; v != sourceVertex; v = path[v]){
             pathList.addVertex(v);
         }
